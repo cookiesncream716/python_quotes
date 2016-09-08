@@ -16,3 +16,6 @@ class Quote(Model):
 			create_data = {'quotes': info['quote'], 'author': info['author'], 'user_id': info['user_id']}
 			self.db.query_db(create_query, create_data)
 			return {'status': True}
+	def show(self):
+		show_query = 'SELECT quotes.quotes, quotes.author, quotes.user_id, quotes.id, users.name, users.id FROM quotes JOIN users on quotes.user_id = users.id'
+		return self.db.query_db(show_query)

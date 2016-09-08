@@ -5,6 +5,7 @@ class Users(Controller):
     def __init__(self, action):
         super(Users, self).__init__(action)
         self.load_model('User')
+        self.load_model('Quote')
     def index(self):
         # name = self.models['User'].test()
         # print'1111111111111111111111111111'
@@ -50,7 +51,8 @@ class Users(Controller):
             session['id'] = login_status['id']
             return redirect('/users/show')
     def show(self):
-        return self.load_view('quotes.html', name = session['name'], id = session['id'])
+        quotes = self.models['Quote'].show()
+        return self.load_view('quotes.html', name = session['name'], id = session['id'], quotes = quotes)
     def logout(self):
         session.clear
         return redirect('/')

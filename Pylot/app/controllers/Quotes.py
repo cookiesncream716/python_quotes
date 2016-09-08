@@ -10,10 +10,10 @@ class Quotes(Controller):
 			'author': request.form['author'],
 			'user_id': id
 		}
-		print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-		print quote
+		# print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+		# print quote
 		quote_status = self.models['Quote'].create(quote)
-		print quote_status
+		# print quote_status
 		if quote_status['status'] == True:
 			return redirect('/users/show')
 		else:

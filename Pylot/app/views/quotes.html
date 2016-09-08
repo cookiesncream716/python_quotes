@@ -13,10 +13,17 @@
 		<div class='container'>
 			<h1>Welcome {{ name }}!</h1>
 			<a href='/users/logout'>Logout</a>
-			<div class='quotes'>
+			<div id='quotes'>
 				<h4>Quotable Quotes</h4>
+				<div class='quotes'>
+					{% for quote in quotes %}
+						<p>{{ quote['author'] }}: {{ quote['quotes'] }}</p>
+						<p>Posted by: {{ quote['name'] }}</p>
+						<button class='btn'>Add to My Favs</button>
+					{% endfor %}
+				</div>
 			</div>
-			<div class='favs'>
+			<div id='favs'>
 				<h4>Your Favs</h4>
 			</div>
 			<h4>Contribute a Quote</h4>
