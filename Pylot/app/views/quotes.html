@@ -19,12 +19,23 @@
 					{% for quote in quotes %}
 						<p>{{ quote['author'] }}: {{ quote['quotes'] }}</p>
 						<p>Posted by: {{ quote['name'] }}</p>
-						<button class='btn'>Add to My Favs</button>
+						<form action="/quotes/create_fav/{{ quote['quote_id'] }}" method='Post'>
+							<button type='submit' class='btn'>Add to My Favs</button>
+						</form>
 					{% endfor %}
 				</div>
 			</div>
 			<div id='favs'>
 				<h4>Your Favs</h4>
+				<div class='favs'>
+					{% for fav in favs %}
+						<p>{{ fav['author']}}: {{ fav['quotes'] }}</p>
+						<p>Posted by: {{ fav['name'] }}</p>
+						<form action='' method='Post'>
+							<button type='submit' class='btn'>Remove from Favs</button>
+						</form>
+					{% endfor %}
+				</div>
 			</div>
 			<h4>Contribute a Quote</h4>
 			<form action='/quotes/create/{{ id }}' method='Post'>

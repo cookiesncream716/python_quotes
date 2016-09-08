@@ -7,9 +7,6 @@ class Users(Controller):
         self.load_model('User')
         self.load_model('Quote')
     def index(self):
-        # name = self.models['User'].test()
-        # print'1111111111111111111111111111'
-        # print name[0]['name']
         return self.load_view('index.html')
     def create(self):
         # print '************************************'
@@ -52,7 +49,8 @@ class Users(Controller):
             return redirect('/users/show')
     def show(self):
         quotes = self.models['Quote'].show()
-        return self.load_view('quotes.html', name = session['name'], id = session['id'], quotes = quotes)
+        fav_quotes = self.models['Quote'].show_favs(session['id'])
+        return self.load_view('quotes.html', name = session['name'], id = session['id'], quotes = quotes, favs = fav_quotes)
     def logout(self):
         session.clear
         return redirect('/')

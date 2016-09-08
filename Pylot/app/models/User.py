@@ -4,12 +4,6 @@ import re
 class User(Model):
     def __init__(self):
         super(User, self).__init__()
-    # def test(self):
-    #     query = 'SELECT * FROM users'
-    #     result = self.db.query_db(query)
-    #     print 'AAAAAAAAAHHHHHHHAAAAAAHHHH'
-    #     print result
-    #     return result
     def create(self, info):
         # print "MMMMOOOODDDDEEELLLL"
         # print info['name']

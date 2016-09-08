@@ -20,3 +20,11 @@ class Quotes(Controller):
 			for error in quote_status['errors']:
 				flash(error)
 				return redirect('/users/show')
+	def create_fav(self, id):
+		# print 'FFFFFFFFAAAAAAAVVVVVV'
+		fav_data = {
+			'user_id': session['id'],
+			'quote_id': id
+		}
+		self.models['Quote'].add_fav(fav_data)
+		return redirect('/users/show')
