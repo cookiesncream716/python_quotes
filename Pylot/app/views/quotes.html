@@ -1,0 +1,43 @@
+<html>
+	<head>
+	<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- stylesheet link -->
+		<link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+	</head>
+	<body>
+		<div class='container'>
+			<h1>Welcome {{ name }}!</h1>
+			<a href='/users/logout'>Logout</a>
+			<div class='quotes'>
+				<h4>Quotable Quotes</h4>
+			</div>
+			<div class='favs'>
+				<h4>Your Favs</h4>
+			</div>
+			<h4>Contribute a Quote</h4>
+			<form action='/quotes/create/{{ id }}' method='Post'>
+				<div class='form-group'>
+					<label for='author'>Who Said It:</lable>
+					<input type='text' class='form-control' name='author'>
+				</div>
+				<div class='form-group'>
+					<label for='quote'>Quote:</label>
+					<input type='text' class='form-control' name='quote'>
+				</div>
+				<button type='submit' class='btn'>Submit</button>
+			</form>
+			{% with error = get_flashed_messages() %}
+				{% if error: %}
+					{% for x in error: %}
+						<p>{{x}}</p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %}
+		</div>
+	</body>
+</html>
