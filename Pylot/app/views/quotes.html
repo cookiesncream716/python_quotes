@@ -57,7 +57,7 @@
 				{% with error = get_flashed_messages() %}
 					{% if error: %}
 						{% for x in error: %}
-							<p>{{x}}</p>
+							<p class='error'>{{x}}</p>
 						{% endfor %}
 					{% endif %}
 				{% endwith %}
