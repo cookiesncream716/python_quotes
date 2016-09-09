@@ -21,10 +21,11 @@ class Quote(Model):
 			self.db.query_db(create_query, create_data)
 			return {'status': True}
 	def show(self, id):
-		show_query = 'SELECT quotes.quotes, quotes.author, quotes.user_id, quotes.id AS quote_id, users.name, users.id FROM quotes JOIN users on quotes.user_id = users.id'
+		# show_query = 'SELECT quotes.quotes, quotes.author, quotes.user_id, quotes.id AS quote_id, users.name, users.id FROM quotes JOIN users on quotes.user_id = users.id'
 		# show_query = 'SELECT favorites.user_id AS no_show, quotes.id AS quote_id, quotes.quotes, quotes.author, quotes.user_id, users.id, users.name FROM users JOIN quotes ON users.id = quotes.user_id LEFT JOIN favorites ON quotes.user_id = favorites.user_id WHERE favorites.user_id != :id OR favorites.user_id is NULL'
-		# show_data = { 'id': id}
-		return self.db.query_db(show_query)
+		show_query = 'SELECT quotes.author, quotes.quotes, quotes.id, users.name FROM quotes JOIN users ON quotes.user_id = users.id WHERE quotes.id NOT IN (SELECT quote_id FROM favorites WHERE user_id = :id)'
+		show_data = { 'id': id}
+		return self.db.query_db(show_query, show_data)
 	def show_favs(self, id):
 		print 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 		print id

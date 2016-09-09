@@ -20,7 +20,7 @@
 				<div class='quotes'>	
 						<p>{{ quote['author'] }}: {{ quote['quotes'] }}</p>
 						<p>Posted by: {{ quote['name'] }}</p>
-						<form action="/quotes/create_fav/{{ quote['quote_id'] }}" method='Post'>
+						<form action="/quotes/create_fav/{{ quote['id'] }}" method='Post'>
 							<button type='submit' class='btn'>Add to My Favs</button>
 						</form>
 				</div>
