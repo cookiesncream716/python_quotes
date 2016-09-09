@@ -28,3 +28,7 @@ class Quotes(Controller):
 		}
 		self.models['Quote'].add_fav(fav_data)
 		return redirect('/users/show')
+	def delete(self, id):
+		self.models['Quote'].delete_fav(id)
+		return redirect('/users/show')
+

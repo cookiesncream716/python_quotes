@@ -48,8 +48,11 @@ class Users(Controller):
             session['id'] = login_status['id']
             return redirect('/users/show')
     def show(self):
-        quotes = self.models['Quote'].show()
+        quotes = self.models['Quote'].show(session['id'])
+        # print quotes
+        # print quotes[0]['no_show']
         fav_quotes = self.models['Quote'].show_favs(session['id'])
+        print fav_quotes
         return self.load_view('quotes.html', name = session['name'], id = session['id'], quotes = quotes, favs = fav_quotes)
     def logout(self):
         session.clear

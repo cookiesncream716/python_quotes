@@ -7,6 +7,7 @@ routes['GET']['/users/show'] = 'Users#show'
 routes['POST']['/quotes/create/<id>'] = 'Quotes#create'
 routes['GET']['/users/logout'] = 'Users#logout'
 routes['POST']['/quotes/create_fav/<id>'] = 'Quotes#create_fav'
+routes['POST']['/quotes/delete/<id>'] = 'Quotes#delete'
 
 """
     You can add routes and specify their handlers as follows:
